@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ajith Rajan — Software Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a08;
+    --surface: #111110;
+    --border: #222220;
+    --text: #e8e6df;
+    --muted: #6b6860;
+    --accent: #c8f060;
+    --accent2: #f06040;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Mono', monospace;
+    font-size: 14px;
+    line-height: 1.6;
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  /* Custom cursor */
+  .cursor {
+    width: 10px; height: 10px;
+    background: var(--accent);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.15s ease, opacity 0.15s ease;
+    transform: translate(-50%, -50%);
+  }
+  .cursor-ring {
+    width: 36px; height: 36px;
+    border: 1px solid rgba(200,240,96,0.4);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s, height 0.3s, border-color 0.3s;
+  }
+  body:has(a:hover) .cursor-ring,
+  body:has(button:hover) .cursor-ring {
+    width: 60px; height: 60px;
+    border-color: var(--accent);
+  }
+
+  /* Noise texture overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9997;
+  }
+
+  /* Nav */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 48px;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s, background 0.3s;
+  }
+  nav.scrolled {
+    border-color: var(--border);
+    background: rgba(10,10,8,0.85);
+    backdrop-filter: blur(12px);
+  }
+  .nav-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    color: var(--text);
+    text-decoration: none;
+    letter-spacing: -0.5px;
+  }
+  .nav-logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* Hero */
+  #hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 120px 48px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-grid-bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(var(--border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 60% at 60% 50%, black 30%, transparent 80%);
+    opacity: 0.5;
+  }
+  .hero-content { position: relative; z-index: 1; }
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid var(--border);
+    padding: 6px 14px;
+    border-radius: 100px;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 32px;
+    animation: fadeUp 0.8s ease both;
+  }
+  .hero-tag::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.7); }
+  }
+  h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(52px, 6vw, 88px);
+    line-height: 1.0;
+    letter-spacing: -2px;
+    margin-bottom: 24px;
+    animation: fadeUp 0.8s 0.1s ease both;
+  }
+  h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .hero-desc {
+    max-width: 440px;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 40px;
+    animation: fadeUp 0.8s 0.2s ease both;
+  }
+  .hero-cta {
+    display: flex;
+    gap: 16px;
+    animation: fadeUp 0.8s 0.3s ease both;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: var(--bg);
+    border: none;
+    padding: 14px 28px;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: none;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .btn-primary:hover { background: #d9ff77; transform: translateY(-2px); }
+  .btn-ghost {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border);
+    padding: 14px 28px;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: none;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .btn-ghost:hover { border-color: var(--muted); transform: translateY(-2px); }
+
+  /* Hero right — code block */
+  .hero-code {
+    position: relative;
+    z-index: 1;
+    justify-self: end;
+    width: 100%;
+    max-width: 480px;
+    animation: fadeIn 1s 0.4s ease both;
+  }
+  .code-window {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 40px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.03);
+  }
+  .code-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--border);
+  }
+  .dot { width: 10px; height: 10px; border-radius: 50%; }
+  .dot-r { background: #ff5f57; }
+  .dot-y { background: #febc2e; }
+  .dot-g { background: #28c840; }
+  .code-filename { margin-left: auto; font-size: 11px; color: var(--muted); }
+  .code-body { padding: 24px; font-size: 12px; line-height: 1.8; }
+  .line { display: block; }
+  .kw { color: #c792ea; }
+  .fn { color: #82aaff; }
+  .str { color: var(--accent); }
+  .cm { color: var(--muted); font-style: italic; }
+  .num { color: var(--accent2); }
+  .indent { padding-left: 20px; }
+  .indent2 { padding-left: 40px; }
+
+  /* Marquee */
+  .marquee-wrap {
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    overflow: hidden;
+    padding: 16px 0;
+    background: var(--surface);
+  }
+  .marquee-track {
+    display: flex;
+    gap: 0;
+    animation: marquee 20s linear infinite;
+    width: max-content;
+  }
+  .marquee-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 32px;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+  .marquee-item::after {
+    content: '✦';
+    color: var(--accent);
+    font-size: 10px;
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* Section base */
+  section { padding: 100px 48px; }
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+  h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(36px, 4vw, 56px);
+    letter-spacing: -1px;
+    line-height: 1.1;
+    margin-bottom: 48px;
+  }
+
+  /* About */
+  #about {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .about-text p { color: var(--muted); line-height: 1.8; margin-bottom: 16px; }
+  .about-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin-top: 48px;
+  }
+  .stat {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 24px;
+  }
+  .stat-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 40px;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .stat-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+  .skills-list { display: flex; flex-direction: column; gap: 16px; }
+  .skill-item { display: flex; flex-direction: column; gap: 8px; }
+  .skill-name { font-size: 12px; color: var(--muted); display: flex; justify-content: space-between; }
+  .skill-bar { height: 2px; background: var(--border); border-radius: 2px; overflow: hidden; }
+  .skill-fill {
+    height: 100%;
+    background: var(--accent);
+    border-radius: 2px;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 1s ease;
+  }
+  .skill-fill.animated { transform: scaleX(1); }
+
+  /* Projects */
+  #projects { background: var(--surface); }
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+  }
+  .project-card {
+    background: var(--bg);
+    padding: 36px;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s;
+    group: true;
+  }
+  .project-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(200,240,96,0.04) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .project-card:hover::before { opacity: 1; }
+  .project-card:hover { background: #0d0d0b; }
+  .project-num {
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    margin-bottom: 48px;
+  }
+  .project-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 26px;
+    letter-spacing: -0.5px;
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+  .project-desc { color: var(--muted); font-size: 13px; line-height: 1.6; margin-bottom: 28px; }
+  .project-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 32px; }
+  .tag {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border: 1px solid var(--border);
+    padding: 4px 10px;
+  }
+  .project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    text-decoration: none;
+    transition: gap 0.2s;
+  }
+  .project-link:hover { gap: 14px; }
+  .project-featured {
+    grid-column: span 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+  .project-featured .project-visual {
+    background: linear-gradient(135deg, #1a2a0a 0%, #0a1a1a 100%);
+    min-height: 260px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DM Serif Display', serif;
+    font-size: 72px;
+    color: rgba(200,240,96,0.15);
+    letter-spacing: -4px;
+  }
+
+  /* Experience */
+  #experience { max-width: 860px; margin: 0 auto; }
+  .timeline { display: flex; flex-direction: column; gap: 0; }
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 160px 1px 1fr;
+    gap: 0 32px;
+    padding-bottom: 48px;
+  }
+  .timeline-date { color: var(--muted); font-size: 12px; padding-top: 4px; text-align: right; }
+  .timeline-line {
+    width: 1px;
+    background: var(--border);
+    position: relative;
+  }
+  .timeline-line::before {
+    content: '';
+    position: absolute;
+    top: 6px; left: 50%;
+    transform: translateX(-50%);
+    width: 7px; height: 7px;
+    background: var(--accent);
+    border-radius: 50%;
+    box-shadow: 0 0 12px var(--accent);
+  }
+  .timeline-content { padding-bottom: 4px; }
+  .timeline-role {
+    font-family: 'DM Serif Display', serif;
+    font-size: 20px;
+    margin-bottom: 4px;
+  }
+  .timeline-company { color: var(--accent); font-size: 12px; margin-bottom: 12px; }
+  .timeline-desc { color: var(--muted); line-height: 1.7; font-size: 13px; }
+
+  /* Contact */
+  #contact {
+    text-align: center;
+    border-top: 1px solid var(--border);
+    padding: 120px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  #contact::before {
+    content: '';
+    position: absolute;
+    bottom: -200px; left: 50%;
+    transform: translateX(-50%);
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(200,240,96,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  #contact h2 { margin-bottom: 16px; }
+  .contact-sub { color: var(--muted); margin-bottom: 48px; max-width: 400px; margin-left: auto; margin-right: auto; }
+  .contact-email {
+    display: inline-block;
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(22px, 3vw, 36px);
+    color: var(--text);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 4px;
+    transition: border-color 0.2s, color 0.2s;
+    margin-bottom: 48px;
+  }
+  .contact-email:hover { color: var(--accent); border-color: var(--accent); }
+  .social-links { display: flex; justify-content: center; gap: 24px; }
+  .social-link {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .social-link:hover { color: var(--accent); }
+
+  /* Footer */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 24px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--muted);
+    font-size: 11px;
+  }
+
+  /* Animations */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  .reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    #hero { grid-template-columns: 1fr; padding: 120px 24px 60px; }
+    .hero-code { display: none; }
+    #about { grid-template-columns: 1fr; gap: 48px; padding: 60px 24px; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .project-featured { grid-column: span 1; grid-template-columns: 1fr; }
+    .project-featured .project-visual { display: none; }
+    nav { padding: 20px 24px; }
+    .nav-links { gap: 20px; }
+    section { padding: 60px 24px; }
+    #contact { padding: 80px 24px; }
+    footer { flex-direction: column; gap: 8px; text-align: center; padding: 20px 24px; }
+    .timeline-item { grid-template-columns: 1fr; gap: 8px; }
+    .timeline-date { text-align: left; }
+    .timeline-line { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- Nav -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">Ajith<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Work</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- Hero -->
+<section id="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Open to new opportunities</div>
+    <h1>Building<br><em>enterprise</em><br>solutions.</h1>
+    <p class="hero-desc">Software Developer with 3+ years building scalable enterprise systems. Specializing in Spring Boot microservices and full-stack development for global aviation & logistics clients.</p>
+    <div class="hero-cta">
+      <a href="#projects" class="btn-primary">View My Work</a>
+      <a href="#contact" class="btn-ghost">Get in Touch</a>
+    </div>
+  </div>
+  <div class="hero-code">
+    <div class="code-window">
+      <div class="code-header">
+        <div class="dot dot-r"></div>
+        <div class="dot dot-y"></div>
+        <div class="dot dot-g"></div>
+        <span class="code-filename">portfolio.js</span>
+      </div>
+      <div class="code-body">
+        <span class="line"><span class="kw">const</span> <span class="fn">developer</span> = {</span>
+        <span class="line indent"><span class="fn">name</span>: <span class="str">'Ajith Rajan'</span>,</span>
+        <span class="line indent"><span class="fn">role</span>: <span class="str">'Senior Solution Engineer'</span>,</span>
+        <span class="line indent"><span class="fn">experience</span>: <span class="num">3</span>,</span>
+        <span class="line indent"><span class="fn">skills</span>: [</span>
+        <span class="line indent2"><span class="str">'Java'</span>, <span class="str">'Spring Boot'</span>,</span>
+        <span class="line indent2"><span class="str">'Microservices'</span>, <span class="str">'REST APIs'</span>,</span>
+        <span class="line indent2"><span class="str">'PostgreSQL'</span>, <span class="str">'Kubernetes'</span></span>
+        <span class="line indent">],</span>
+        <span class="line indent"><span class="fn">location</span>: <span class="str">'Kochi, Kerala'</span>,</span>
+        <span class="line indent"><span class="fn">coffee</span>: <span class="str">'always'</span>,</span>
+        <span class="line">};</span>
+        <span class="line">&nbsp;</span>
+        <span class="line"><span class="cm">// Ready to build something amazing?</span></span>
+        <span class="line"><span class="fn">developer</span>.<span class="fn">hire</span>();</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Marquee -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span class="marquee-item">Java</span>
+    <span class="marquee-item">Spring Boot</span>
+    <span class="marquee-item">Microservices</span>
+    <span class="marquee-item">REST APIs</span>
+    <span class="marquee-item">PostgreSQL</span>
+    <span class="marquee-item">Kubernetes</span>
+    <span class="marquee-item">Jenkins</span>
+    <span class="marquee-item">Hibernate</span>
+    <span class="marquee-item">JavaScript</span>
+    <span class="marquee-item">CI/CD</span>
+    <span class="marquee-item">Java</span>
+    <span class="marquee-item">Spring Boot</span>
+    <span class="marquee-item">Microservices</span>
+    <span class="marquee-item">REST APIs</span>
+    <span class="marquee-item">PostgreSQL</span>
+    <span class="marquee-item">Kubernetes</span>
+    <span class="marquee-item">Jenkins</span>
+    <span class="marquee-item">Hibernate</span>
+    <span class="marquee-item">JavaScript</span>
+    <span class="marquee-item">CI/CD</span>
+  </div>
+</div>
+
+<!-- About -->
+<section id="about">
+    <div class="about-text reveal">
+    <div class="section-label">// about me</div>
+    <h2>Enterprise software,<br>built to scale.</h2>
+    <p>I'm a Software Developer at IBS Software, Kochi, with 3+ years of experience delivering enterprise-grade solutions for aviation and logistics clients worldwide.</p>
+    <p>I specialize in Spring Boot microservices, RESTful APIs, and CI/CD pipelines. I've been promoted to Senior Solution Engineer within 2 years — a recognition of my technical depth and team leadership in Agile environments.</p>
+    <div class="about-stats">
+      <div class="stat">
+        <div class="stat-num">3+</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">99.9%</div>
+        <div class="stat-label">System Uptime</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">2yr</div>
+        <div class="stat-label">To Senior Role</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">∞</div>
+        <div class="stat-label">Requests / Day</div>
+      </div>
+    </div>
+  </div>
+  <div class="reveal" style="transition-delay:0.15s">
+    <div class="section-label">// expertise</div>
+    <h2 style="font-size:28px; margin-bottom:32px;">Core Skills</h2>
+    <div class="skills-list" id="skillsList">
+      <div class="skill-item">
+        <div class="skill-name"><span>Java / Spring Boot</span><span>95%</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:95%"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name"><span>Microservices / REST APIs</span><span>92%</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:92%"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name"><span>PostgreSQL / MySQL</span><span>88%</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name"><span>Kubernetes / Jenkins</span><span>80%</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name"><span>JavaScript / HTML & CSS</span><span>78%</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:78%"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-name"><span>Agile / CI/CD / DevOps</span><span>85%</span></div>
+        <div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Projects -->
+<section id="projects">
+  <div class="section-label reveal">// key contributions</div>
+  <h2 class="reveal">Enterprise work<br>that ships at scale.</h2>
+  <div class="projects-grid">
+    <!-- Featured project -->
+    <div class="project-card project-featured reveal">
+      <div style="padding:36px;">
+        <div class="project-num">01 — Featured</div>
+        <div class="project-title">Aviation Enterprise Platform</div>
+        <div class="project-desc">Architected and delivered enterprise-grade backend services for global aviation clients at IBS Software. Optimized database queries and backend performance serving millions of API requests daily.</div>
+        <div class="project-tags">
+          <span class="tag">Spring Boot</span>
+          <span class="tag">Microservices</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">Kubernetes</span>
+        </div>
+        <a href="#" class="project-link">Learn More →</a>
+      </div>
+      <div class="project-visual">01</div>
+    </div>
+
+    <div class="project-card reveal" style="transition-delay:0.1s">
+      <div class="project-num">02</div>
+      <div class="project-title">CI/CD Pipeline Overhaul</div>
+      <div class="project-desc">Overhauled CI/CD pipeline monitoring using Jenkins, enabling rapid error detection and resolution across distributed teams, maintaining 99.9% system uptime.</div>
+      <div class="project-tags">
+        <span class="tag">Jenkins</span>
+        <span class="tag">CI/CD</span>
+        <span class="tag">DevOps</span>
+      </div>
+      <a href="#" class="project-link">Details →</a>
+    </div>
+
+    <div class="project-card reveal" style="transition-delay:0.15s">
+      <div class="project-num">03</div>
+      <div class="project-title">Cruise Client Features</div>
+      <div class="project-desc">Delivered critical feature modules for high-profile cruise industry clients, resulting in enhanced customer satisfaction and recognized for exceptional problem-solving.</div>
+      <div class="project-tags">
+        <span class="tag">Java</span>
+        <span class="tag">REST APIs</span>
+        <span class="tag">Hibernate</span>
+      </div>
+      <a href="#" class="project-link">Details →</a>
+    </div>
+
+    <div class="project-card reveal" style="transition-delay:0.2s">
+      <div class="project-num">04</div>
+      <div class="project-title">Observability & Logging System</div>
+      <div class="project-desc">Designed robust error handling and logging mechanisms that improved system observability and significantly reduced debugging time across the engineering team.</div>
+      <div class="project-tags">
+        <span class="tag">Spring Boot</span>
+        <span class="tag">Logging</span>
+        <span class="tag">Agile</span>
+      </div>
+      <a href="#" class="project-link">Details →</a>
+    </div>
+  </div>
+</section>
+
+<!-- Experience -->
+<section id="experience" style="max-width:100%">
+  <div style="max-width:860px; margin:0 auto">
+    <div class="section-label reveal">// experience</div>
+    <h2 class="reveal">Where I've<br>worked.</h2>
+    <div class="timeline">
+      <div class="timeline-item reveal">
+        <div class="timeline-date">Jul 2024 — Now</div>
+        <div class="timeline-line"></div>
+        <div class="timeline-content">
+          <div class="timeline-role">Senior Solution Engineer</div>
+          <div class="timeline-company">IBS Software · Kochi, Kerala</div>
+          <div class="timeline-desc">Architecting enterprise-grade solutions for aviation and logistics clients. Mentoring junior engineers on Spring Boot best practices, overseeing CI/CD pipelines, and ensuring 99.9% system uptime through proactive incident resolution.</div>
+        </div>
+      </div>
+      <div class="timeline-item reveal" style="transition-delay:0.1s">
+        <div class="timeline-date">Jul 2022 — Jul 2024</div>
+        <div class="timeline-line"></div>
+        <div class="timeline-content">
+          <div class="timeline-role">Solution Engineer</div>
+          <div class="timeline-company">IBS Software · Kochi, Kerala</div>
+          <div class="timeline-desc">Developed and maintained RESTful APIs and microservices using Spring Boot, serving millions of daily requests for global aviation clients. Designed robust error handling and logging systems; contributed to technical documentation and Agile ceremonies.</div>
+        </div>
+      </div>
+      <div class="timeline-item reveal" style="transition-delay:0.2s">
+        <div class="timeline-date">Jun 2019 — Jul 2019</div>
+        <div class="timeline-line"></div>
+        <div class="timeline-content">
+          <div class="timeline-role">Software Development Trainee</div>
+          <div class="timeline-company">CTS Infotech · Cochin, India</div>
+          <div class="timeline-desc">Completed intensive Java training covering OOP design principles and SDLC. Built hands-on projects demonstrating proficiency in core Java, data structures, and algorithms.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact">
+  <div class="section-label reveal">// contact</div>
+  <h2 class="reveal">Let's build<br>something great.</h2>
+  <p class="contact-sub reveal">Have a project in mind or just want to chat? My inbox is always open.</p>
+  <div class="reveal">
+    <a href="mailto:ajithrajanp@gmail.com" class="contact-email">ajithrajanp@gmail.com</a>
+  </div>
+  <div class="social-links reveal">
+    <a href="tel:8592908056" class="social-link">+91 85929 08056</a>
+    <a href="https://linkedin.com/in/ajithrajanp" class="social-link" target="_blank">LinkedIn</a>
+    <a href="#" class="social-link">GitHub</a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <span>© 2026 Ajith Rajan. All rights reserved.</span>
+  <span>Designed & Built with ♥</span>
+</footer>
+
+<script>
+  // Custom cursor
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; cursor.style.left = mx + 'px'; cursor.style.top = my + 'px'; });
+  function animateRing() {
+    rx += (mx - rx) * 0.12;
+    ry += (my - ry) * 0.12;
+    ring.style.left = rx + 'px';
+    ring.style.top = ry + 'px';
+    requestAnimationFrame(animateRing);
+  }
+  animateRing();
+
+  // Navbar scroll
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // Reveal on scroll
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => observer.observe(el));
+
+  // Skill bars
+  const skillObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.querySelectorAll('.skill-fill').forEach((bar, i) => {
+          setTimeout(() => bar.classList.add('animated'), i * 100);
+        });
+      }
+    });
+  }, { threshold: 0.3 });
+  const skillsList = document.getElementById('skillsList');
+  if (skillsList) skillObserver.observe(skillsList);
+</script>
+</body>
+</html>
