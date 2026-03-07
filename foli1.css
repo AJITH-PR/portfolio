@@ -185,3 +185,19 @@
     width:10%;
     border-radius:12px;
   }
+  .logo {
+    font-family: Arial, sans-serif;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #fff;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+    display: inline-block;
+    padding: 10px 20px;
+    border: 2px solid transparent;
+    border-image: linear-gradient(135deg, #6a11cb, #2575fc) 1;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
