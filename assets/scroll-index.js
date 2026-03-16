@@ -18393,7 +18393,7 @@ function WO() {
             const A = [];
             for (let w = 1; w <= M.frameCount; w++) {
                 const E = new Image;
-                E.src = `../sequence/${M.folder}/ezgif-frame-${y(w, 3)}.jpg`,
+                E.src = `../../portfolio/sequence/${M.folder}/ezgif-frame-${y(w, 3)}.jpg`,
                 A.push(E)
             }
             d.push(A)
