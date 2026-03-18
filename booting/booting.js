@@ -70,7 +70,7 @@ function init() {
 
   typeLine();
   setTimeout(() => {
-    window.location.href = "./scroll_index.html";
+    window.location.href = "./scroll-index.html";
   }, 3500);
 }
 
