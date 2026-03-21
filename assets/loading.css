@@ -1,0 +1,96 @@
+#skeleton-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #0f172a;
+  z-index: 9999;
+  overflow-y: auto;
+}
+
+/* Center feed like LinkedIn */
+.feed-container {
+  padding: 20px;
+}
+
+/* Skeleton shimmer */
+.sk {
+  background: linear-gradient(
+    90deg,
+    #1e293b 25%,
+    #334155 50%,
+    #1e293b 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 6px;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Post layout */
+.post {
+  width: 100%;
+  max-width: 90%;
+  margin: 0 auto 30px auto; /* center but wider */
+  background: #020617;
+  padding: 24px;
+  border-radius: 14px;
+}
+
+/* Header */
+.header {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.avatar {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+}
+
+.name {
+  width: 40%;
+  height: 12px;
+  margin-bottom: 6px;
+}
+
+.meta {
+  width: 25%;
+  height: 10px;
+}
+
+/* Content */
+.line {
+  height: 10px;
+  margin-bottom: 8px;
+}
+
+.line.short {
+  width: 60%;
+}
+
+/* Media */
+.media {
+  height: 300px;
+  width: 100%;
+  margin-top: 15px;
+  border-radius: 10px;
+}
+/* Actions */
+.actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.btn {
+  width: 30%;
+  height: 30px;
+}
