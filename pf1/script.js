@@ -23,7 +23,7 @@ window.addEventListener("load", () => {
 
     // Show current date
     showCurrentDate();
-    loadingmusic();
+
     // ===== HIDE INTRO =====
     setTimeout(() => {
         const intro = document.getElementById("intro");
@@ -137,13 +137,6 @@ music.play().catch(err => {
 window.addEventListener("dblclick", () => {
     playMusic();
 });
-
-function loadingmusic(){
-    setTimeout(() => {
-        const music = document.getElementById("bg-music");
-        music.play().catch(err => {
-        console.error("Error playing music:", err);
-    });
-    }, 4000);
-    
-}
+window.addEventListener("click", () => {
+    playMusic();
+},{ once: true });
