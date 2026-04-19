@@ -6,7 +6,7 @@
 
   async function loadQuiz() {
     try {
-      const res = await fetch('/assets/java_juice_contents_transformed.json');
+      const res = await fetch('assets/java_juice_contents_transformed.json');
       if (!res.ok) throw new Error('Failed to fetch sample.json');
       const data = await res.json();
       init(data);
