@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Java Juice</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/assets/style.css"/>
+  <link rel="icon" type="image/x-icon" href="/assets/favicon.ico"/>
+</head>
+<body>
+
+<header>
+  <div class="badge">Java MCQ</div>
+  <h1 id="test-title">Loading…</h1>
+  <p class="desc" id="test-desc"></p>
+  <div class="stats-bar" id="stats-bar"></div>
+</header>
+
+<div class="toolbar">
+  <button class="btn btn-ghost" onclick="revealAll()">Show All Answers</button>
+  <button class="btn btn-ghost" onclick="hideAll()">Hide All Answers</button>
+  <div class="spacer"></div>
+  <span class="page-info" id="page-info">Page — / —</span>
+  <button class="btn btn-accent" onclick="hideAll()">Reset Page</button>
+</div>
+
+<div class="progress-wrap">
+  <div class="progress-info">
+    <span>Overall Progress</span>
+    <span id="progress-text">0 / 0 revealed</span>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+</div>
+
+<div id="status"><div class="spinner"></div><p>Loading questions…</p></div>
+<div id="quiz-container"></div>
+<div class="pagination" id="pagination"></div>
+<div class="jump-wrap" id="jump-wrap" style="display:none">
+  <label for="jump-input">Go to page:</label>
+  <input type="number" id="jump-input" class="jump-input" min="1" placeholder="1"
+    onkeydown="if(event.key==='Enter')jumpToPage()"/>
+  <button class="jump-go" onclick="jumpToPage()">Go</button>
+</div>
+
+<script src="/assets/main.js"></script>
+</body>
+</html>
