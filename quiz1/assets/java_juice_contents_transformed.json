@@ -1,0 +1,1062 @@
+{
+  "title": "Java Juice Interview Questions",
+  "description": "Comprehensive Java questions with answers removed for practice.",
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is a class in java?",
+      "answer": "",
+      "explanation": "A class is a group of similar objects which have common properties. It is a template or a blueprint from which objects are created. It is not a real one. We can say that class is a picture of an object which comes into our mind. Class can also be defined as a user defined data type."
+    },
+    {
+      "id": 2,
+      "question": "What is an object?",
+      "answer": "",
+      "explanation": "Object is a real instance of a class. Each object has its own states and behaviors."
+    },
+    {
+      "id": 3,
+      "question": "What is new keyword in java?",
+      "answer": "",
+      "explanation": "new keyword is used to create an object of the class. It also allocates memory for it in the heap memory."
+    },
+    {
+      "id": 4,
+      "question": "How many types of memory areas are allocated by JVM?",
+      "answer": "",
+      "explanation": "Class(Method) Area, Heap, Stack, Program counter register, and Native method stack."
+    },
+    {
+      "id": 5,
+      "question": "What if I write static public void instead of public static void for the main() method?",
+      "answer": "",
+      "explanation": "Program compiles and runs properly. The order of modifiers doesn't matter."
+    },
+    {
+      "id": 6,
+      "question": "What is a Constructor in java?",
+      "answer": "",
+      "explanation": "Constructor is used to initialize an object at the time of creation itself."
+    },
+    {
+      "id": 7,
+      "question": "What are the Rules for defining a constructor?",
+      "answer": "",
+      "explanation": "Constructor name should be same as the class name; It cannot contain any return type; All access modifiers are allowed (private, public, protected, default); It cannot have any non access modifiers (final, static, abstract, synchronized etc); It can take any number of parameters; A constructor can throw exception or we can declare exceptions using throws for a constructor."
+    },
+    {
+      "id": 8,
+      "question": "What is the use of private constructors in Java?",
+      "answer": "",
+      "explanation": "When we use private for a constructor then object for the class can only be created internally within the class, no outside class can create object for this class. Using this we can restrict the caller from creating objects. This will be helpful in writing a singleton class."
+    },
+    {
+      "id": 9,
+      "question": "Can we have a Constructor in an Interface?",
+      "answer": "",
+      "explanation": "No, we cannot have a constructor defined in an Interface."
+    },
+    {
+      "id": 10,
+      "question": "Can we have a Constructor in an abstract class?",
+      "answer": "",
+      "explanation": "Yes, we can have constructor defined in an abstract class."
+    },
+    {
+      "id": 11,
+      "question": "What is constructor chaining in Java?",
+      "answer": "",
+      "explanation": "Constructor chaining is nothing but calling one constructor from another. this() is used to call the current class constructor and super() is used to call the parent class constructor."
+    },
+    {
+      "id": 12,
+      "question": "Can we have this() and super() in the same constructor?",
+      "answer": "",
+      "explanation": "No, we cannot have this() and super() in a constructor. Also this() or super() must be the first statement in the constructor."
+    },
+    {
+      "id": 13,
+      "question": "Is it possible to call a sub class constructor from super class constructor?",
+      "answer": "",
+      "explanation": "No. You cannot call a sub class constructor from a super class constructor."
+    },
+    {
+      "id": 14,
+      "question": "Can we write a class with no constructors in it? What will happen during object creation?",
+      "answer": "",
+      "explanation": "Yes, we can have a class with no constructor, when the compiler encounters a class with no constructor then it will automatically create a default constructor for you."
+    },
+    {
+      "id": 15,
+      "question": "Will compiler create the default constructor when we already have a constructor defined in the class ?",
+      "answer": "",
+      "explanation": "No, the compiler will not create the default constructor when we already have a constructor defined."
+    },
+    {
+      "id": 16,
+      "question": "Why constructors cannot be final in Java?",
+      "answer": "",
+      "explanation": "When you set a method as final, then 'The method cannot be overridden by any class', but constructor by JLS (Java Language Specification) definition can't be overridden. A constructor is not inherited, so there is no need or doesn't make sense for declaring it as final."
+    },
+    {
+      "id": 17,
+      "question": "Why constructors cannot be static in Java?",
+      "answer": "",
+      "explanation": "When you set a method as static, it means 'The Method belong to class and not to any particular object' but a constructor is always invoked with respect to an object, so it makes no sense for a constructor to be static."
+    },
+    {
+      "id": 18,
+      "question": "What is the purpose of default constructor?",
+      "answer": "",
+      "explanation": "Default constructor is used to provide the default values to the object states like 0, null etc. depending on the type."
+    },
+    {
+      "id": 19,
+      "question": "What is parameterized constructor?",
+      "answer": "",
+      "explanation": "A constructor which has arguments is called parameterized constructor."
+    },
+    {
+      "id": 20,
+      "question": "Does constructor return any value?",
+      "answer": "",
+      "explanation": "No."
+    },
+    {
+      "id": 21,
+      "question": "What happens if you keep a return type for a constructor?",
+      "answer": "",
+      "explanation": "Ideally, constructor must not have a return type. By definition, if a method has a return type, it's not a constructor. It will be treated as a normal method. But compiler gives a warning saying that method has a constructor name."
+    },
+    {
+      "id": 22,
+      "question": "When do we need constructor overloading?",
+      "answer": "",
+      "explanation": "A class having more than one constructor is called constructor overloading. Sometimes there is a need of initializing an object in different ways. This can be done using constructor overloading."
+    },
+    {
+      "id": 23,
+      "question": "Can we define a method with same name of class?",
+      "answer": "",
+      "explanation": "Yes, it is allowed to define a method with same class name. No compile time error and runtime error is raised, but it is not recommended as per coding standards."
+    },
+    {
+      "id": 24,
+      "question": "How compiler and JVM can differentiate constructor and method definitions of both having same class name?",
+      "answer": "",
+      "explanation": "By using return type, if there is a return type it is considered as a method else it is considered as a constructor."
+    },
+    {
+      "id": 25,
+      "question": "What are the various access specifiers for Java classes?",
+      "answer": "",
+      "explanation": "In Java, access specifiers define the access scope: 1. public: accessible from anywhere. 2. protected: accessible from classes in the same package and subclasses in different packages. 3. default: accessible only from the same package. 4. private: accessible only from the same class."
+    },
+    {
+      "id": 26,
+      "question": "What are instance variables in Java programming language?",
+      "answer": "",
+      "explanation": "Instance variables are variables declared within the class body, outside of any method or block, and declared without 'static' keyword. They are created with a new class instance and stored in the heap memory."
+    },
+    {
+      "id": 27,
+      "question": "What are local variables in Java programming language?",
+      "answer": "",
+      "explanation": "Local variables are variables declared within a method body. They live only as long as the method remains on the stack and are stored in the stack memory."
+    },
+    {
+      "id": 28,
+      "question": "What are block variables in Java programming language?",
+      "answer": "",
+      "explanation": "Block variables are declared within a block such as an init block or within a for loop. They live only during the execution of the block and are stored in the stack memory."
+    },
+    {
+      "id": 29,
+      "question": "What is the default value of the local variables?",
+      "answer": "",
+      "explanation": "The local variables are not initialized to any default value. They must be initialized explicitly before using it."
+    },
+    {
+      "id": 30,
+      "question": "What will be the initial value of an object reference which is defined as an instance variable?",
+      "answer": "",
+      "explanation": "The object references are all initialized to null in Java."
+    },
+    {
+      "id": 31,
+      "question": "What kind of memory is used for storing instance variables and local variables ?",
+      "answer": "",
+      "explanation": "Local variables are stored in stack whereas instance variables are stored in heap."
+    },
+    {
+      "id": 32,
+      "question": "Why do instance variables have default values whereas local variables don't have any default value ?",
+      "answer": "",
+      "explanation": "Instance variables are loaded into heap and initialized with default values when an instance is created. Local variables are stored in stack until they are being used."
+    },
+    {
+      "id": 33,
+      "question": "What is the difference between instance variable and local variable?",
+      "answer": "",
+      "explanation": "Local variables are visible only in their method/block, while instance variables are seen by all methods in the class. Instance variables get default values; local variables must be explicitly initialized."
+    },
+    {
+      "id": 34,
+      "question": "What is static keyword in Java?",
+      "answer": "",
+      "explanation": "static is a non access modifier used for memory management, representing class-level scope. It can be applied to variables, methods, nested classes, and blocks."
+    },
+    {
+      "id": 35,
+      "question": "What is a static variable ?",
+      "answer": "",
+      "explanation": "A variable declared with the static keyword is a static or class variable. It represents a common property shared by all instances of the class and is loaded when the class is loaded."
+    },
+    {
+      "id": 36,
+      "question": "What is a static method ?",
+      "answer": "",
+      "explanation": "A static method belongs to the class rather than the object. It can be called using the class name and can access static variables directly but cannot access non-static variables/methods without an object."
+    },
+    {
+      "id": 37,
+      "question": "What's the purpose of static methods and static variables?",
+      "answer": "",
+      "explanation": "Used to share a method or variable between multiple objects of a class instead of creating separate copies for each object."
+    },
+    {
+      "id": 38,
+      "question": "Can we overload static methods in Java?",
+      "answer": "",
+      "explanation": "Yes, you can overload static methods in Java."
+    },
+    {
+      "id": 39,
+      "question": "Can we override static methods of a class?",
+      "answer": "",
+      "explanation": "No. Static methods are resolved at compilation time, not runtime, so the concept of overriding does not apply."
+    },
+    {
+      "id": 40,
+      "question": "What is the difference between instance variable and static variable?",
+      "answer": "",
+      "explanation": "Static variables have the longest scope (created when class is loaded). Instance variables are created when an object is created. Static variables are accessed using the class name."
+    },
+    {
+      "id": 41,
+      "question": "Is it possible to declare a static variable in a method?",
+      "answer": "",
+      "explanation": "No. Static variables belong to the class scope and cannot be declared inside methods."
+    },
+    {
+      "id": 42,
+      "question": "Can we access non-static data member from static method in java?",
+      "answer": "",
+      "explanation": "No, not directly. You need an object of the class to access non-static members from a static method."
+    },
+    {
+      "id": 43,
+      "question": "Can the static keyword be applied on outer class?",
+      "answer": "",
+      "explanation": "No. But it may be applied for inner classes."
+    },
+    {
+      "id": 44,
+      "question": "How is the memory allocated for static variables internally in java?",
+      "answer": "",
+      "explanation": "Memory allocation occurs only once when the program runs for the first time and the class is loaded."
+    },
+    {
+      "id": 45,
+      "question": "Why doesn't Java allow overriding of static methods?",
+      "answer": "",
+      "explanation": "Overriding is for instance methods to provide different behaviors for subclasses. Static methods are not associated with any instance, making the concept inapplicable."
+    },
+    {
+      "id": 46,
+      "question": "Can you make a class static in Java?",
+      "answer": "",
+      "explanation": "Yes, you can define a static nested class within another class."
+    },
+    {
+      "id": 47,
+      "question": "What is a static block ?",
+      "answer": "",
+      "explanation": "A block executed before the main() method at class loading time, used to initialize static data members."
+    },
+    {
+      "id": 48,
+      "question": "Can we have multiple static blocks in a class ?",
+      "answer": "",
+      "explanation": "Yes. They will be executed in the order they are written."
+    },
+    {
+      "id": 49,
+      "question": "Can we access static data member from static method?",
+      "answer": "",
+      "explanation": "Yes, directly."
+    },
+    {
+      "id": 50,
+      "question": "Can we use this and super in static context?",
+      "answer": "",
+      "explanation": "No, because 'this' and 'super' belong to objects."
+    },
+    {
+      "id": 51,
+      "question": "Difference between JDK ,JRE and JVM?",
+      "answer": "",
+      "explanation": "JDK is the development kit (includes JRE + tools). JRE provides the execution environment (includes JVM + libraries). JVM runs the application."
+    },
+    {
+      "id": 52,
+      "question": "Why java is called platform independent?",
+      "answer": "",
+      "explanation": "Java source code is compiled into byte code, which can run on any platform that has a compatible JRE (Java Runtime Environment) installed."
+    },
+    {
+      "id": 53,
+      "question": "What is High level language?",
+      "answer": "",
+      "explanation": "Languages like Java that are close to human language and abstract the machine language complexity."
+    },
+    {
+      "id": 54,
+      "question": "What are the primitive data types in Java ?",
+      "answer": "",
+      "explanation": "byte, short, int, long, float, double, char, boolean."
+    },
+    {
+      "id": 55,
+      "question": "Which package is auto imported by default in any java class?",
+      "answer": "",
+      "explanation": "java.lang package."
+    },
+    {
+      "id": 56,
+      "question": "Can I import same package/class twice?",
+      "answer": "",
+      "explanation": "Yes, but JVM will only load the class once."
+    },
+    {
+      "id": 57,
+      "question": "Should package be the first statement in a Java class?",
+      "answer": "",
+      "explanation": "Yes (excluding comments). Otherwise, it results in a compilation error."
+    },
+    {
+      "id": 58,
+      "question": "What is the difference between & and && operator?",
+      "answer": "",
+      "explanation": "& is bit-wise AND (evaluates both arguments). && is conditional logical AND (short-circuits if the first argument is false)."
+    },
+    {
+      "id": 59,
+      "question": "What is the difference between ++i and i++ under increment operators?",
+      "answer": "",
+      "explanation": "++i increments before use. i++ increments after the current expression is evaluated."
+    },
+    {
+      "id": 60,
+      "question": "Is there a performance impact due to a large number of import statements that are unused?",
+      "answer": "",
+      "explanation": "No, unused imports are ignored."
+    },
+    {
+      "id": 61,
+      "question": "What is the output of System.out.println(1.0/0)?",
+      "answer": "",
+      "explanation": "It prints Infinity (double supports infinity)."
+    },
+    {
+      "id": 62,
+      "question": "What happens when we forget break in switch case?",
+      "answer": "",
+      "explanation": "Execution continues through subsequent case labels (fall-through) until a break is found or the block ends."
+    },
+    {
+      "id": 63,
+      "question": "When no command line arguments are passed, does the String array parameter of main() method be null?",
+      "answer": "",
+      "explanation": "No, it is an empty array with zero elements (length 0)."
+    },
+    {
+      "id": 64,
+      "question": "Difference between System.exit(0), exit (1) and exit(-1) in Java.",
+      "answer": "",
+      "explanation": "0 indicates successful termination. >0 indicates failed execution. <0 indicates execution error."
+    },
+    {
+      "id": 65,
+      "question": "Can we invoke a static method on a null object reference in Java?",
+      "answer": "",
+      "explanation": "Yes. Since static methods don't require an instance, the compiler optimizes the call."
+    },
+    {
+      "id": 66,
+      "question": "What are Loops in Java? What are three types of loops?",
+      "answer": "",
+      "explanation": "Looping executes a block repeatedly. Types: for, while, do-while."
+    },
+    {
+      "id": 67,
+      "question": "What is an infinite Loop?",
+      "answer": "",
+      "explanation": "A loop that runs indefinitely without a terminating condition."
+    },
+    {
+      "id": 68,
+      "question": "What is the difference between continue and break statement?",
+      "answer": "",
+      "explanation": "break exits the loop instantly. continue skips the current iteration and moves to the next one."
+    },
+    {
+      "id": 69,
+      "question": "What is the difference between double and float variables in Java?",
+      "answer": "",
+      "explanation": "float is 4 bytes (single precision). double is 8 bytes (double precision)."
+    },
+    {
+      "id": 70,
+      "question": "What's the base class in Java from which all classes are derived?",
+      "answer": "",
+      "explanation": "java.lang.Object"
+    },
+    {
+      "id": 71,
+      "question": "Why java main method is static?",
+      "answer": "",
+      "explanation": "So JVM can call it without creating an object of the class, avoiding extra memory allocation issues."
+    },
+    {
+      "id": 72,
+      "question": "Can main() method in Java can return any data?",
+      "answer": "",
+      "explanation": "No, it always has a void return type."
+    },
+    {
+      "id": 73,
+      "question": "Can we declare main() method as private or protected or with no access modifier?",
+      "answer": "",
+      "explanation": "No, it must be public for JVM to access it."
+    },
+    {
+      "id": 74,
+      "question": "Can we overload main() method?",
+      "answer": "",
+      "explanation": "Yes, but JVM specifically looks for the signature 'public static void main(String[] args)' to start the program."
+    },
+    {
+      "id": 75,
+      "question": "Can we override main method of Java class?",
+      "answer": "",
+      "explanation": "No. It is static, and overriding is for instance methods."
+    },
+    {
+      "id": 76,
+      "question": "Can we make main method as final in Java ?",
+      "answer": "",
+      "explanation": "Yes."
+    },
+    {
+      "id": 77,
+      "question": "Can we change return type of main() method ?",
+      "answer": "",
+      "explanation": "No, it must be void."
+    },
+    {
+      "id": 78,
+      "question": "What are Java Packages?",
+      "answer": "",
+      "explanation": "A group of related classes and interfaces, categorized as built-in or user-defined."
+    },
+    {
+      "id": 79,
+      "question": "Why packages are used for?",
+      "answer": "",
+      "explanation": "To organize classes/interfaces and avoid naming conflicts."
+    },
+    {
+      "id": 80,
+      "question": "What are API in java?",
+      "answer": "",
+      "explanation": "A collection of prewritten packages/classes/interfaces that run on JVM to reduce developer workload."
+    },
+    {
+      "id": 81,
+      "question": "Can we declare a class as abstract without having any abstract methods?",
+      "answer": "",
+      "explanation": "Yes. This prevents the class from being instantiated."
+    },
+    {
+      "id": 82,
+      "question": "What's the difference between an abstract class and interface in Java?",
+      "answer": "",
+      "explanation": "Interface variables are public static final by default. Abstract classes can have all types. A class can implement multiple interfaces but extend only one abstract class."
+    },
+    {
+      "id": 83,
+      "question": "Can we declare a class as protected?",
+      "answer": "",
+      "explanation": "Only for inner classes."
+    },
+    {
+      "id": 84,
+      "question": "What is method overriding? What is the rule for that?",
+      "answer": "",
+      "explanation": "Changing a superclass method's implementation in a subclass. Rules: same signature/arguments/return type; access modifier must be same or more accessible."
+    },
+    {
+      "id": 85,
+      "question": "What is interface in Java?",
+      "answer": "",
+      "explanation": "A reference type used to achieve abstraction and support multiple inheritance functionalities."
+    },
+    {
+      "id": 86,
+      "question": "Why to use java interfaces?",
+      "answer": "",
+      "explanation": "To achieve abstraction, multiple inheritance, and loose coupling."
+    },
+    {
+      "id": 87,
+      "question": "Can we create an object of an interface?",
+      "answer": "",
+      "explanation": "No."
+    },
+    {
+      "id": 88,
+      "question": "Can we declare the interface as final?",
+      "answer": "",
+      "explanation": "No, interfaces must be implemented by other classes."
+    },
+    {
+      "id": 89,
+      "question": "Which keywords java compiler adds before interface fields and methods?",
+      "answer": "",
+      "explanation": "Fields: public static final. Methods: public abstract."
+    },
+    {
+      "id": 90,
+      "question": "Can an interface extend a class?",
+      "answer": "",
+      "explanation": "No, only other interfaces."
+    },
+    {
+      "id": 91,
+      "question": "Can we declare an interface with the abstract keyword?",
+      "answer": "",
+      "explanation": "Yes, but it's redundant as interfaces are abstract by default."
+    },
+    {
+      "id": 92,
+      "question": "What is default keyword in an interface?",
+      "answer": "",
+      "explanation": "Allows non-abstract methods (with a body) in an interface (JDK 1.8 feature)."
+    },
+    {
+      "id": 93,
+      "question": "What is marker interface?",
+      "answer": "",
+      "explanation": "An interface with no fields or methods (e.g., Serializable, Cloneable), used to signal specific handling to JVM."
+    },
+    {
+      "id": 94,
+      "question": "Does interface extend Object class by default?",
+      "answer": "",
+      "explanation": "No, but all classes do."
+    },
+    {
+      "id": 95,
+      "question": "What will happen if we do not initialize variables in an interface.?",
+      "answer": "",
+      "explanation": "Compilation error (as they are 'final')."
+    },
+    {
+      "id": 96,
+      "question": "What are the inheritances possible in java using extends and implements?",
+      "answer": "",
+      "explanation": "Class implements interface(s); class extends one class; interface extends interface(s)."
+    },
+    {
+      "id": 97,
+      "question": "How can we access variables with same name defined in two interfaces from a class which implements both these interfaces?",
+      "answer": "",
+      "explanation": "By using InterfaceName.variable_name."
+    },
+    {
+      "id": 98,
+      "question": "Can we change the value of a field in interface after initialization?",
+      "answer": "",
+      "explanation": "No, they are final."
+    },
+    {
+      "id": 99,
+      "question": "Does Importing a package imports its sub-packages as well in Java?",
+      "answer": "",
+      "explanation": "No, they must be imported separately."
+    },
+    {
+      "id": 100,
+      "question": "When the constructor of a class is invoked?",
+      "answer": "",
+      "explanation": "Every time an object is created."
+    },
+    {
+      "id": 101,
+      "question": "Can a class have multiple constructors?",
+      "answer": "",
+      "explanation": "Yes (constructor overloading)."
+    },
+    {
+      "id": 102,
+      "question": "Can a digit form the first character of an identifier?",
+      "answer": "",
+      "explanation": "No."
+    },
+    {
+      "id": 103,
+      "question": "Why Strings in Java are called as Immutable?",
+      "answer": "",
+      "explanation": "Once assigned, their value cannot be changed; any change creates a new object in the string constant pool."
+    },
+    {
+      "id": 104,
+      "question": "What is encapsulation?",
+      "answer": "",
+      "explanation": "Wrapping states (variables) and behavior (methods) into a single unit (class), often using private variables with public getters/setters."
+    },
+    {
+      "id": 105,
+      "question": "What is the advantage of fully encapsulated class?",
+      "answer": "",
+      "explanation": "Allows validation logic within setter methods."
+    },
+    {
+      "id": 106,
+      "question": "What is Inheritance in Java?",
+      "answer": "",
+      "explanation": "Including a base class's states and behaviors in a subclass to achieve code reuse and dynamic polymorphism."
+    },
+    {
+      "id": 107,
+      "question": "What do you achieve in inheritance?",
+      "answer": "",
+      "explanation": "Code reuse and dynamic polymorphism."
+    },
+    {
+      "id": 108,
+      "question": "What is abstraction?",
+      "answer": "",
+      "explanation": "Hiding internal implementation details and exposing only essential functionalities."
+    },
+    {
+      "id": 109,
+      "question": "What is polymorphism?",
+      "answer": "",
+      "explanation": "The ability of one thing to take many forms (static/overloading or dynamic/overriding)."
+    },
+    {
+      "id": 110,
+      "question": "What is method overloading?",
+      "answer": "",
+      "explanation": "Having multiple methods in the same class with the same name but different parameters."
+    },
+    {
+      "id": 111,
+      "question": "What is dynamic polymorphism?",
+      "answer": "",
+      "explanation": "The ability of an object variable of one type to refer to different types (subclasses)."
+    },
+    {
+      "id": 112,
+      "question": "Can you extend String class?",
+      "answer": "",
+      "explanation": "No, String is a final class."
+    },
+    {
+      "id": 113,
+      "question": "Is null a keyword?",
+      "answer": "",
+      "explanation": "No, it is a literal (like true and false)."
+    },
+    {
+      "id": 114,
+      "question": "Who adds the default constructor if you don’t provide one?",
+      "answer": "",
+      "explanation": "The compiler."
+    },
+    {
+      "id": 115,
+      "question": "Can you instantiate abstract class?",
+      "answer": "",
+      "explanation": "No."
+    },
+    {
+      "id": 116,
+      "question": "What is Anonymous Inner Class in Java?",
+      "answer": "",
+      "explanation": "An inner class without a name, used for creating a single object while overriding methods of a class/interface."
+    },
+    {
+      "id": 117,
+      "question": "Can we call the garbage collector explicitly ?",
+      "answer": "",
+      "explanation": "We can call System.gc(), but it doesn't guarantee the GC will run."
+    },
+    {
+      "id": 118,
+      "question": "Can we overload/override a private method in Java?",
+      "answer": "",
+      "explanation": "Overload: Yes. Override: No (private methods aren't inherited)."
+    },
+    {
+      "id": 119,
+      "question": "What is the difference between constructor and regular methods ?",
+      "answer": "",
+      "explanation": "Constructors are called once per object creation, have no return type, and must match the class name. Methods can be called many times, have return types, and any name."
+    },
+    {
+      "id": 120,
+      "question": "What is toString() method?",
+      "answer": "",
+      "explanation": "An Object class method used to get a string representation of an object. Inherited by all classes."
+    },
+    {
+      "id": 121,
+      "question": "Name few Java IDE’s?",
+      "answer": "",
+      "explanation": "Eclipse, NetBeans, IntelliJ IDEA."
+    },
+    {
+      "id": 122,
+      "question": "What is the main difference between pass-by-reference and pass-by-value?",
+      "answer": "",
+      "explanation": "Java uses pass-by-value: parameters receive a copy of the data (primitive or reference)."
+    },
+    {
+      "id": 123,
+      "question": "Can we have multiple public classes in a java source file.?",
+      "answer": "",
+      "explanation": "No."
+    },
+    {
+      "id": 124,
+      "question": "What are the non-access modifiers you know?",
+      "answer": "",
+      "explanation": "abstract, static, final, synchronized, transient."
+    },
+    {
+      "id": 125,
+      "question": "What is the use of the final keyword in Java?",
+      "answer": "",
+      "explanation": "With class: prevents inheritance. With method: prevents overriding. With variable: makes it a constant."
+    },
+    {
+      "id": 126,
+      "question": "Where can we initialize a final static variable if it is not initialized at the time of declaration?",
+      "answer": "",
+      "explanation": "In any static initialization block."
+    },
+    {
+      "id": 127,
+      "question": "Can we make local variable/array/collection final in Java?",
+      "answer": "",
+      "explanation": "Yes. For arrays/collections, the reference cannot be changed, but elements can still be modified."
+    },
+    {
+      "id": 128,
+      "question": "Is it possible abstract final for a method?",
+      "answer": "",
+      "explanation": "No (illegal combination)."
+    },
+    {
+      "id": 129,
+      "question": "Is it possible to have an abstract method in a final class?",
+      "answer": "",
+      "explanation": "No (illegal combination)."
+    },
+    {
+      "id": 130,
+      "question": "Difference between Heap and Stack Memory in Java JVM?",
+      "answer": "",
+      "explanation": "Heap is shared by all threads (stores objects). Stack is local to each thread (stores method frames/local variables)."
+    },
+    {
+      "id": 131,
+      "question": "Difference between StringBuffer, StringBuilder and String in Java?",
+      "answer": "",
+      "explanation": "String is immutable. StringBuffer and StringBuilder are mutable. StringBuffer is thread-safe (synchronized); StringBuilder is faster but not thread-safe."
+    },
+    {
+      "id": 132,
+      "question": "Difference between equals and equalsIgnoreCase?",
+      "answer": "",
+      "explanation": "equals() checks for exact character/case match. equalsIgnoreCase() ignores case differences."
+    },
+    {
+      "id": 133,
+      "question": "What is difference between an int and Integer in Java?",
+      "answer": "",
+      "explanation": "int is a primitive type. Integer is its wrapper class providing object flexibility and utility methods."
+    },
+    {
+      "id": 134,
+      "question": "Why String is not a primitive data type in Java?",
+      "answer": "",
+      "explanation": "It is a class representing an array of characters with its own methods and varying size."
+    },
+    {
+      "id": 135,
+      "question": "How an object eligible for garbage collection in Java?",
+      "answer": "",
+      "explanation": "When its reference is lost (un-referenced objects)."
+    },
+    {
+      "id": 136,
+      "question": "What is static and dynamic class loading in Java?",
+      "answer": "",
+      "explanation": "Static: using 'new' operator. Dynamic: using Class.forName() method."
+    },
+    {
+      "id": 137,
+      "question": "How java becomes robust?",
+      "answer": "",
+      "explanation": "Multi-platformed, high reliability, strictly typed, runtime checking, and good memory management."
+    },
+    {
+      "id": 138,
+      "question": "Difference Between JAR and WAR Files?",
+      "answer": "",
+      "explanation": "JAR (Java Archive) aggregates class files/resources for applications. WAR (Web Archive) contains files (Servlet, JSP, HTML) for web applications."
+    },
+    {
+      "id": 139,
+      "question": "What is ArrayStoreException in java?",
+      "answer": "",
+      "explanation": "A runtime exception when trying to store an incompatible element type in an array object."
+    },
+    {
+      "id": 140,
+      "question": "Can you pass the negative number as an array size?",
+      "answer": "",
+      "explanation": "No (throws NegativeArraySizeException at runtime)."
+    },
+    {
+      "id": 141,
+      "question": "Can you change the size of the array once after creating it?",
+      "answer": "",
+      "explanation": "No."
+    },
+    {
+      "id": 142,
+      "question": "What is an anonymous array?",
+      "answer": "",
+      "explanation": "An array created without a reference variable."
+    },
+    {
+      "id": 143,
+      "question": "What are the different ways of copying an array into another array?",
+      "answer": "",
+      "explanation": "for loop, Arrays.copyOf(), System.arraycopy(), clone()."
+    },
+    {
+      "id": 144,
+      "question": "How do you sort the array elements?",
+      "answer": "",
+      "explanation": "Using Arrays.sort() method (uses quicksort)."
+    },
+    {
+      "id": 145,
+      "question": "What value does array elements get, if they are not initialized?",
+      "answer": "",
+      "explanation": "They get default values (e.g., 0, null)."
+    },
+    {
+      "id": 146,
+      "question": "What are the different ways to iterate over an array in java?",
+      "answer": "",
+      "explanation": "Normal for loop, extended/enhanced for loop, while, do-while."
+    },
+    {
+      "id": 147,
+      "question": "What are the drawbacks of the arrays in java?",
+      "answer": "",
+      "explanation": "Fixed size; you must know the element count before creation."
+    },
+    {
+      "id": 148,
+      "question": "How to convert string containing an int value to int?",
+      "answer": "",
+      "explanation": "Integer.parseInt(\"10\");"
+    },
+    {
+      "id": 149,
+      "question": "What is subString() in String class?",
+      "answer": "",
+      "explanation": "Returns a new string that is a part of the original string (beginIndex inclusive, endIndex exclusive)."
+    },
+    {
+      "id": 150,
+      "question": "How to convert String to byte array?",
+      "answer": "",
+      "explanation": "str.getBytes();"
+    },
+    {
+      "id": 151,
+      "question": "What is replaceAll() method in String?",
+      "answer": "",
+      "explanation": "Replaces each substring matching a regular expression with a given replacement."
+    },
+    {
+      "id": 152,
+      "question": "What is java String intern() method?",
+      "answer": "",
+      "explanation": "Returns a reference to the equal string literal from the string pool."
+    },
+    {
+      "id": 153,
+      "question": "Why Char array is preferred over String for storing password?",
+      "answer": "",
+      "explanation": "Strings stay in memory until GC; char arrays can be explicitly cleared (set to blank) after use, reducing security risks."
+    },
+    {
+      "id": 154,
+      "question": "Is String Thread Safe?",
+      "answer": "",
+      "explanation": "Yes, because it is immutable."
+    },
+    {
+      "id": 155,
+      "question": "Can you create an object without using new operator in Java?",
+      "answer": "",
+      "explanation": "Yes: newInstance(), clone(), deserialization, or using string/array literals."
+    },
+    {
+      "id": 156,
+      "question": "How is Java more secure than other languages?",
+      "answer": "",
+      "explanation": "Own memory management (no pointers), access keywords (private/public), compile-time checking, and exception handling."
+    },
+    {
+      "id": 157,
+      "question": "What is Write Once, Run Anywhere (WORA)?",
+      "answer": "",
+      "explanation": "The ability of a Java program to run on any operating system with a compatible JVM."
+    },
+    {
+      "id": 158,
+      "question": "What is classloader?",
+      "answer": "",
+      "explanation": "A JVM subsystem used to load classes and interfaces (Types: Bootstrap, Extension, System, Plugin)."
+    },
+    {
+      "id": 159,
+      "question": "Explain memory leak in Java.?",
+      "answer": "",
+      "explanation": "When objects no longer used by the application are still referenced, preventing the GC from reclaiming their memory."
+    },
+    {
+      "id": 160,
+      "question": "Difference Between ClassNotFoundException & NoClassDefFoundError.?",
+      "answer": "",
+      "explanation": "ClassNotFoundException: occurs when Class.forName() fails to find a class at runtime. NoClassDefFoundError: class was available at compile time but not runtime."
+    },
+    {
+      "id": 161,
+      "question": "What is enum in java?",
+      "answer": "",
+      "explanation": "A special type used to define a collection of constants, reducing bugs by restricting variables to predefined values."
+    },
+    {
+      "id": 162,
+      "question": "What is Exception in Java?",
+      "answer": "",
+      "explanation": "A deviation from the normal program flow occurring at runtime."
+    },
+    {
+      "id": 163,
+      "question": "What are the two types of Exceptions in Java?",
+      "answer": "",
+      "explanation": "Checked (warned by compiler, must be handled/declared) and Unchecked (not checked at compile time, e.g., RuntimeException)."
+    },
+    {
+      "id": 164,
+      "question": "What is the difference between Exception and Error in java ?",
+      "answer": "",
+      "explanation": "Exceptions can be handled/recovered from. Errors are serious conditions (e.g., OutOfMemory) that shouldn't be caught/handled."
+    },
+    {
+      "id": 165,
+      "question": "Can we write only try block without catch and finally blocks?",
+      "answer": "",
+      "explanation": "No. try must be followed by catch or finally."
+    },
+    {
+      "id": 166,
+      "question": "Explain try-with-resource in java?",
+      "answer": "",
+      "explanation": "A try statement that declares resources (like streams) which are automatically closed after the block ends (JDK 1.7 feature)."
+    },
+    {
+      "id": 167,
+      "question": "What are the two types of I/O streams?",
+      "answer": "",
+      "explanation": "Byte stream and Character stream."
+    },
+    {
+      "id": 168,
+      "question": "What is serialization in java?",
+      "answer": "",
+      "explanation": "Converting an object into a binary format to persist to disk or send over a network. Deserialization is the reverse."
+    },
+    {
+      "id": 169,
+      "question": "What is a thread in Java?",
+      "answer": "",
+      "explanation": "A concurrent unit of execution within a process."
+    },
+    {
+      "id": 170,
+      "question": "What is synchronization?",
+      "answer": "",
+      "explanation": "Allowing only one thread at a time to access a shared resource/object to prevent interference."
+    },
+    {
+      "id": 171,
+      "question": "What is Collection framework?",
+      "answer": "",
+      "explanation": "A group of interfaces and classes used to store and manipulate groups of objects (List, Set, Map, Queue)."
+    },
+    {
+      "id": 172,
+      "question": "Difference between ArrayList and LinkedList?",
+      "answer": "",
+      "explanation": "ArrayList uses a dynamic array (better for searching). LinkedList uses a doubly linked list (better for updates/deletions)."
+    },
+    {
+      "id": 173,
+      "question": "What is JDBC?",
+      "answer": "",
+      "explanation": "A Java API to connect and execute queries with a database using drivers."
+    },
+    {
+      "id": 174,
+      "question": "What is Singleton design pattern.?",
+      "answer": "",
+      "explanation": "Ensures only one instance of a class exists globally within an application."
+    },
+    {
+      "id": 175,
+      "question": "What is Factory pattern in Java.?",
+      "answer": "",
+      "explanation": "Defines an interface for creating objects, but lets subclasses decide which class to instantiate."
+    },
+    {
+      "id": 176,
+      "question": "What is Observer design pattern?",
+      "answer": "",
+      "explanation": "Defines a dependency where multiple 'observer' objects are notified when a 'subject' object changes state."
+    }
+  ]
+}
